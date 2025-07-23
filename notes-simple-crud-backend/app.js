@@ -5,7 +5,7 @@ import helmet from 'helmet';
 
 // Load environment variables
 dotenv.config();
-console.log("🔑 JWT_SECRET is", process.env.JWT_SECRET ? "✅ set" : "❌ NOT set");
+
 
 const app = express();
 const PORT = process.env.PORT || 6000;
@@ -50,12 +50,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/notes", notesRoutes);
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: 'Server is running',
-        timestamp: new Date().toISOString()
-    });
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Welcome to your Notes API!',
+    docs: '/api/health'
+  });
 });
 
 // 404 handler
