@@ -18,13 +18,10 @@ import "./models/notes.model.js";
 import "./models/user.model.js";
 
 // CORS configuration
-app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
-    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}));
-
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://notes-app-mern-frontend-y2es.onrender.com"
+];
 // Security middleware
 app.use(helmet({
     contentSecurityPolicy: {
