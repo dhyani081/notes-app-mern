@@ -18,10 +18,30 @@ import "./models/notes.model.js";
 import "./models/user.model.js";
 
 // CORS configuration
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://notes-app-mern-frontend-y2es.onrender.com"
+// ];
 const allowedOrigins = [
   "http://localhost:5173",
   "https://notes-app-mern-frontend-y2es.onrender.com"
 ];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+};
+
+app.use(cors(corsOptions));
+
+
+
 
 // Security middleware
 app.use(helmet({
