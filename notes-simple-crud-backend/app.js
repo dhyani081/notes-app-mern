@@ -22,6 +22,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://notes-app-mern-frontend-y2es.onrender.com"
 ];
+
 // Security middleware
 app.use(helmet({
     contentSecurityPolicy: {
